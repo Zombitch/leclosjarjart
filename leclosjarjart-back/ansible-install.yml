@@ -1,0 +1,71 @@
+- hosts: localhost
+  become: yes
+  tasks:
+
+  - name: Remove a container
+    docker_container:
+      name: leclosjarjart
+      keep_volumes: true
+      state: absent
+
+  - name: Create leclosjarjart data folder
+    file:
+      path: /data/leclosjarjart/docker
+      state: directory
+
+  - name: Create leclosjarjart volume
+    community.docker.docker_volume:
+      name: leclosjarjart_data
+
+  - name: Delete Dockerfile
+    file:
+      path: /data/leclosjarjart/docker/Dockerfile
+      state: absent
+
+  - name: Write docker file
+    ansible.builtin.blockinfile:
+      path: /data/leclosjarjart/docker/Dockerfile
+      create: true
+      mode: a+rwx
+      block: |
+        FROM node:22.14-alpine3.21
+        RUN apk update
+        RUN apk add wget
+        RUN mkdir -p /opt/leclosjarjart
+        WORKDIR /opt/leclosjarjart/
+        RUN wget https://github.com/Zombitch/leclosjarjart/archive/refs/heads/main.zip
+        RUN unzip main.zip && rm -f main.zip
+        WORKDIR /opt/leclosjarjart/leclosjarjart-main/leclosjarjart-back
+        RUN npm install -g @nestjs/cli
+        RUN npm i
+        EXPOSE 4000
+        CMD ["npm","start"]
+      state: present
+
+  - name: Delete previous image
+    community.docker.docker_image:
+      name: leclosjarjart-back
+      state: absent
+      force_absent: true
+
+  - name: Create the image
+    community.docker.docker_image:
+      name: leclosjarjart-back
+      source: build
+      build:
+        path: /data/leclosjarjart-back/docker
+
+  - name: Run navssi/tools container
+    community.docker.docker_container:
+      container_default_behavior: no_defaults
+      name: leclosjarjart-back
+      image: leclosjarjart-back
+      hostname: leclosjarjart-back_host
+      state: started
+      restart_policy: always
+      exposed_ports :
+        - 4000
+      volumes:
+        - leclosjarjart_data:/opt/leclosjarjart/leclosjarjart-main/leclosjarjart-back/data
+      networks:
+        - name: "{{ network }}"

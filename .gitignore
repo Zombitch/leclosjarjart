@@ -1,0 +1,51 @@
+# compiled output
+/leclosjarjart-back/dist
+/leclosjarjart-back/node_modules
+/leclosjarjart-back/data
+
+./leclosjarjart-front/dist
+./leclosjarjart-front/node_modules
+
+# Logs
+./leclosjarjart-back/logs
+./leclosjarjart-back/*.log
+./leclosjarjart-back/npm-debug.log*
+./leclosjarjart-back/pnpm-debug.log*
+./leclosjarjart-back/yarn-debug.log*
+./leclosjarjart-back/yarn-error.log*
+./leclosjarjart-back/lerna-debug.log*
+./leclosjarjart-back/vscode
+
+./leclosjarjart-front/vscode
+./leclosjarjart-front/logs
+./leclosjarjart-front/*.log
+./leclosjarjart-front/npm-debug.log*
+./leclosjarjart-front/pnpm-debug.log*
+./leclosjarjart-front/yarn-debug.log*
+./leclosjarjart-front/yarn-error.log*
+./leclosjarjart-front/lerna-debug.log*
+
+# OS
+./leclosjarjart-back/.DS_Store
+./leclosjarjart-front/.DS_Store
+
+# Tests
+./leclosjarjart-back/coverage
+./leclosjarjart-back/.nyc_output
+./leclosjarjart-front/coverage
+./leclosjarjart-front/.nyc_output
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+**.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
