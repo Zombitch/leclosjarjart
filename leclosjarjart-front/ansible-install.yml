@@ -4,13 +4,13 @@
 
   - name: Remove a container
     docker_container:
-      name: leclosjarjart
+      name: leclosjarjart-front
       keep_volumes: true
       state: absent
 
   - name: Create leclosjarjart data folder
     file:
-      path: /data/leclosjarjart/docker
+      path: /data/leclosjarjart-front/docker
       state: directory
 
   - name: Create leclosjarjart volume
@@ -19,12 +19,12 @@
 
   - name: Delete Dockerfile
     file:
-      path: /data/leclosjarjart/docker/Dockerfile
+      path: /data/leclosjarjart-front/docker/Dockerfile
       state: absent
 
   - name: Write docker file
     ansible.builtin.blockinfile:
-      path: /data/leclosjarjart/docker/Dockerfile
+      path: /data/leclosjarjart-front/docker/Dockerfile
       create: true
       mode: a+rwx
       block: |
