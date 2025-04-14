@@ -9,6 +9,8 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$spacer: 1rem;
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
@@ -41,9 +43,31 @@ $leclosjarjart-front-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-h1{
+h1, h2, h3{
   color: mat.get-color-from-palette(mat.$cyan-palette, 800);
 }
+
+.color-primary{
+  color: mat.get-color-from-palette(mat.$cyan-palette, 800);
+}
+
+.underline{text-decoration: underline;}
+
+.m-auto{ margin: auto;}
+$spaceFactorValues: (0, 0.25, 0.5, 0.75, 1, 1.5, 3, 4.5, 6);
+@for $i from 1 through 8{
+  $value: $i - 1;
+  .mt-#{$value} { margin-top: $spacer * nth($spaceFactorValues, $i); }
+  .mb-#{$value} { margin-bottom: $spacer * nth($spaceFactorValues, $i); }
+  .ml-#{$value} { margin-left: $spacer * nth($spaceFactorValues, $i); }
+  .mr-#{$value} { margin-right: $spacer * nth($spaceFactorValues, $i); }
+  .font-size-#{$value} { font-size: $spacer * nth($spaceFactorValues, $i); }
+}
+
+.left{ float: left;}
+.right{float: right;}
+
+.text-left{ text-align: left;}
 
 .margin-sm {
   margin: 8px;
@@ -55,4 +79,8 @@ h1{
 
 .margin-lg {
   margin: 32px;
+}
+
+.container{
+  margin: 1rem;
 }

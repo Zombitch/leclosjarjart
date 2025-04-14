@@ -13,6 +13,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 import { CarouselImageComponent } from './components/carousel-image/carousel-image.component';
 
@@ -26,7 +28,7 @@ import { CarouselImageComponent } from './components/carousel-image/carousel-ima
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatCardModule, MatChipsModule, MatGridListModule, MatIconModule, MatTabsModule, MatToolbarModule
+    MatButtonModule, MatCardModule, MatChipsModule, MatGridListModule, MatIconModule, MatTabsModule, MatToolbarModule, MatDividerModule, MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

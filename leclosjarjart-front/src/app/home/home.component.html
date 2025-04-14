@@ -1,67 +1,86 @@
 <div class="page-container">
     <main>
-        <section id="carousel">
+        <section>
             <carousel-image imageSrc="https://www.chateausully.fr/sites/chateau-sully/files/styles/media_xlarge/public/vue-chateau-sully-bis-1400x900.jpg" ></carousel-image>
         </section>
     
-        <section id="title"><h1>Le Clos Jarjart</h1></section>
-
-        <section id="chips">
-            <mat-chip-listbox  aria-label="Dog selection">
-                <mat-chip highlighted>
-                    <mat-icon matChipAvatar>article</mat-icon>3 places
-                </mat-chip>
-                <mat-chip highlighted>
-                    <mat-icon matChipAvatar>article</mat-icon>SPA
-                </mat-chip>
-                <mat-chip highlighted>
-                    <mat-icon matChipAvatar>article</mat-icon>Sauna
-                </mat-chip>
-                <mat-chip highlighted>
-                    <mat-icon matChipAvatar>article</mat-icon>Animaux
-                </mat-chip>
-              </mat-chip-listbox>
+        <section class="container">
+            <h1 id="title">Clos Jarjart</h1>
+            <div id="subtitle">Logement : Gîte, 37340, Savigné-sur-Lathan</div>
+            <div id="quick-description" class="mb-3">3 personnes - 1 Chambre - 1 canapé-lit - 1 Salle d'eau</div>
+            <mat-divider></mat-divider>
         </section>
     
-        <section id="content">
-            <mat-tab-group>
-                <mat-tab>
-                <ng-template mat-tab-label>
-                    <mat-icon class="description-tab-icon">article</mat-icon>
-                    Description
-                </ng-template>
-                <div class="text-content margin-sm">
-                    Charmant gîte idéalement situé en plein <b>cœur de Savigné-Sur-Lathan</b>, offrant environ <b>60 m²</b> d'espace de vie moderne et convivial. Parfait pour un séjour en couple ou une petite escapade, ce logement soigné vous accueille avec :<br /><br />
-                        <ul>
-                        <li><b>Une chambre douillette</b> : Un espace reposant et bien aménagé pour des nuits paisibles.</li>
-                        <li><b>Un espace détente unique</b> : Profitez d’un moment de relaxation dans une salle équipée d’un spa et d’une douche, idéal pour se ressourcer après une journée bien remplie.</li>
-                        <li><b>Une cuisine fonctionnelle</b> : Entièrement équipée pour préparer vos repas dans un cadre chaleureux.</li>
-                        <li><b>Un salon / salle à manger lumineux</b> : Un espace convivial pour partager des moments agréables.</li>
-                        <li><b>Une petite buanderie</b> : Pratique pour vos lessives, offrant tout le confort nécessaire durant votre séjour.</li>
-                        <li><b>Arrivées et départs autonomes</b> : Bénéficiez d’une flexibilité totale grâce à un système d’arrivée et de départ en toute autonomie.</li>
-                        </ul>
-                    De plus, vous trouverez <b>un supermarché à seulement 3 minutes</b> à pied, vous permettant de faire vos courses en toute simplicité.<br />
-                    Que vous souhaitiez explorer la vie locale ou simplement vous détendre dans un cadre intime et confortable, ce gîte est le lieu idéal pour un séjour réussi à Savigné-Sur-Lathan.<br />
-                    <br />
-                    Venez découvrir un véritable havre de paix en plein centre-ville !
-                </div>
-                </mat-tab>
-            
-                <mat-tab>
-                <ng-template mat-tab-label>
-                    <mat-icon class="contact-tab-icon">phone</mat-icon>
-                    Contact
-                </ng-template>
-                Content 2
-                </mat-tab>
-            </mat-tab-group>
+        <section class="container">
+            <div class="text-content mb-3">
+                Charmant gîte idéalement situé en plein <b>cœur de Savigné-Sur-Lathan</b>, offrant environ <b>60 m²</b> d'espace de vie moderne et convivial. Parfait pour un séjour en couple ou une petite escapade.<br />
+                Proche de toutes commodités, vous trouverez <b>un supermarché à seulement 10 minutes</b> à pied, vous permettant de faire vos courses en toute simplicité; une pharmacie ainsi qu'une boulangerie.<br />
+                Que vous souhaitiez explorer la vie locale ou simplement vous détendre dans un cadre intime et confortable, ce gîte est le lieu idéal pour un séjour réussi à Savigné-Sur-Lathan.<br />
+                <br />
+                Venez découvrir un véritable havre de paix en plein centre-ville !
+            </div>
+            <mat-divider></mat-divider>
+        </section>
+
+        <section class="container">
+            <h3 id="title">Contenu du logement</h3>
+            <mat-list>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>spa</mat-icon><div matListItemTitle>Jacuzzi <span class="color-primary">*</span></div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>space_dashboard</mat-icon><div matListItemTitle>Sauna <span class="color-primary">*</span></div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>wifi</mat-icon><div matListItemTitle>Wifi</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>tv</mat-icon><div matListItemTitle>TV</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>water_drop</mat-icon><div matListItemTitle>Lave vaisselle</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>styler</mat-icon><div matListItemTitle>Lave linge</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>width_full</mat-icon><div matListItemTitle>Séche-linge</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>outdoor_grill</mat-icon><div matListItemTitle>Barbecue</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>yard</mat-icon><div matListItemTitle>Jardinet</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>key</mat-icon><div matListItemTitle>Arrivées et départs autonomes</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <div matListItemTitle><span class="font-size-3"><span class="color-primary">*</span> en supplément pour 10€</span></div>
+                </mat-list-item>
+            </mat-list>
+            <mat-divider></mat-divider>
+        </section>
+
+        <section class="container">
+            <h3 id="title">Localisation</h3>
+            <section>
+                <a href="https://maps.app.goo.gl/23uzH7DVhXVzaUoV9">
+                    <carousel-image imageSrc="/assets/location.png" ></carousel-image>
+                </a>
+            </section>
+            <mat-divider></mat-divider>
         </section>
     </main>
-  </div>
+</div>
 
-
-<a href="https://airbnb.com">
-    <button mat-flat-button extended color="primary" class="fixed-footer">
+<a href="https://airbnb.com" class="fixed-footer">
+    <mat-divider></mat-divider>
+    <div class="left ml-2 mt-3 text-content text-left">
+        <div class="underline"><strong>95 €</strong> par nuit</div>
+        <div class="font-size-3">115 € avec Jacuzzi et Sauna</div>
+    </div>
+    <button mat-flat-button extended color="primary" class="right mr-2 mt-2">
         <mat-icon>event</mat-icon>
         Réserver
     </button>
