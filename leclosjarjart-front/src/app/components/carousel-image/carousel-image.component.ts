@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'carousel-image',
-  templateUrl: './carousel-image.component.html',
-  styleUrls: ['./carousel-image.component.scss']
+    selector: 'carousel-image',
+    templateUrl: './carousel-image.component.html',
+    styleUrls: ['./carousel-image.component.scss'],
+    standalone: false
 })
 export class CarouselImageComponent {
   @Input() imageSrc: string = '';
