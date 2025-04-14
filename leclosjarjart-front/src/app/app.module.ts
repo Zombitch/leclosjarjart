@@ -15,22 +15,31 @@ import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {provideNativeDateAdapter} from '@angular/material/core';
 
 import { CarouselImageComponent } from './components/carousel-image/carousel-image.component';
+import { ContactMailComponent } from './components/contact-mail/contact-mail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CarouselImageComponent
+    CarouselImageComponent,
+    ContactMailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatCardModule, MatChipsModule, MatGridListModule, MatIconModule, MatTabsModule, MatToolbarModule, MatDividerModule, MatListModule
+    MatButtonModule, MatCardModule, MatChipsModule, MatGridListModule, MatIconModule, MatTabsModule, MatToolbarModule, 
+    MatDividerModule, MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [provideNativeDateAdapter()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Tile } from '../interfaces/tile.interface';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
+import { ContactMailComponent } from '../components/contact-mail/contact-mail.component';
 
 @Component({
     selector: 'app-home',
@@ -8,6 +10,9 @@ import { Tile } from '../interfaces/tile.interface';
     standalone: false
 })
 export class HomeComponent {
+    readonly contactDialog = inject(MatDialog);
 
-
+    openContactDialog(){
+        this.contactDialog.open(ContactMailComponent);
+    }
 }

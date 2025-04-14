@@ -2,6 +2,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@use "sass:list";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -58,11 +59,11 @@ h1, h2, h3{
 $spaceFactorValues: (0, 0.25, 0.5, 0.75, 1, 1.5, 3, 4.5, 6);
 @for $i from 1 through 8{
   $value: $i - 1;
-  .mt-#{$value} { margin-top: $spacer * nth($spaceFactorValues, $i); }
-  .mb-#{$value} { margin-bottom: $spacer * nth($spaceFactorValues, $i); }
-  .ml-#{$value} { margin-left: $spacer * nth($spaceFactorValues, $i); }
-  .mr-#{$value} { margin-right: $spacer * nth($spaceFactorValues, $i); }
-  .font-size-#{$value} { font-size: $spacer * nth($spaceFactorValues, $i); }
+  .mt-#{$value} { margin-top: $spacer * list.nth($spaceFactorValues, $i); }
+  .mb-#{$value} { margin-bottom: $spacer * list.nth($spaceFactorValues, $i); }
+  .ml-#{$value} { margin-left: $spacer * list.nth($spaceFactorValues, $i); }
+  .mr-#{$value} { margin-right: $spacer * list.nth($spaceFactorValues, $i); }
+  .font-size-#{$value} { font-size: $spacer * list.nth($spaceFactorValues, $i); }
 }
 
 .left{ float: left;}

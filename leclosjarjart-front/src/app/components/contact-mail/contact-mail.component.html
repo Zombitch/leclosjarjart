@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Contact</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+    <div class="mt-2 mb-2">Demande de réservation pour le gîte Clos Jarjart :</div>
+    <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput required [formControl]="email" (blur)="updateErrorEmailMessage()">
+        @if (email.invalid) { <mat-error>{{errorEmailMessage()}}</mat-error> }
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Téléphone</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Date souhaitée</mat-label>
+        <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker" required>
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+          @if (dateRange.controls.start.hasError('matStartDateInvalid')) { <mat-error>Invalid start date</mat-error> }
+          @if (dateRange.controls.end.hasError('matEndDateInvalid')) { <mat-error>Invalid end date</mat-error> }
+          @if (dateRange.invalid) { <mat-error>Champ obligatoire</mat-error> }
+    </mat-form-field>   
+    <mat-form-field>
+        <mat-label>Message</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>      
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button extended mat-dialog-close>Annuler</button>
+  @if (!dateRange.invalid && !email.invalid) {<button mat-flat-button extended color="primary" mat-dialog-close (click)="sendMail()">Envoyer</button>}
+  @else {<button mat-flat-button extended color="primary" mat-dialog-close disabled>Envoyer</button>}
+</mat-dialog-actions>
