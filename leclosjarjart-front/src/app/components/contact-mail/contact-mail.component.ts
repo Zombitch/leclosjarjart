@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 
 @Component({
   selector: 'app-contact-mail',
@@ -9,6 +10,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 
 export class ContactMailComponent {
+  private readonly _adapter = inject<DateAdapter<unknown, unknown>>(DateAdapter);
+  private readonly _locale = signal(inject<unknown>(MAT_DATE_LOCALE));
+
   readonly dateRange = new FormGroup({
     start: new FormControl<Date | null>(null, [Validators.required]),
     end: new FormControl<Date | null>(null, [Validators.required]),
@@ -16,6 +20,11 @@ export class ContactMailComponent {
 
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   errorEmailMessage = signal('');
+
+  constructor(){
+    this._locale.set(navigator.language);
+    this._adapter.setLocale(this._locale());
+  }
 
   updateErrorEmailMessage() {
     if (this.email.hasError('required')) {

@@ -66,6 +66,8 @@ $spaceFactorValues: (0, 0.25, 0.5, 0.75, 1, 1.5, 3, 4.5, 6);
   .font-size-#{$value} { font-size: $spacer * list.nth($spaceFactorValues, $i); }
 }
 
+.w-100{ width: 100%;}
+
 .left{ float: left;}
 .right{float: right;}
 
