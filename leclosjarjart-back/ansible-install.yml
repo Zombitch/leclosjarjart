@@ -10,21 +10,21 @@
 
   - name: Create closjarjart data folder
     file:
-      path: /data/closjarjart/docker
+      path: /data/closjarjart-back/docker
       state: directory
 
   - name: Create closjarjart volume
     community.docker.docker_volume:
-      name: closjarjart_data
+      name: closjarjart-back_data
 
   - name: Delete Dockerfile
     file:
-      path: /data/closjarjart/docker/Dockerfile
+      path: /data/closjarjart-back/docker/Dockerfile
       state: absent
 
   - name: Write docker file
     ansible.builtin.blockinfile:
-      path: /data/closjarjart/docker/Dockerfile
+      path: /data/closjarjart-back/docker/Dockerfile
       create: true
       mode: a+rwx
       block: |
