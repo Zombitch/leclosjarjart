@@ -6,6 +6,8 @@
 ./leclosjarjart-front/dist
 ./leclosjarjart-front/node_modules
 
+**.env
+
 # Logs
 ./leclosjarjart-back/logs
 ./leclosjarjart-back/*.log

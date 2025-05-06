@@ -4,38 +4,46 @@
 
   - name: Remove a container
     docker_container:
-      name: leclosjarjart
+      name: closjarjart
       keep_volumes: true
       state: absent
 
-  - name: Create leclosjarjart data folder
+  - name: Create closjarjart data folder
     file:
-      path: /data/leclosjarjart/docker
+      path: /data/closjarjart/docker
       state: directory
 
-  - name: Create leclosjarjart volume
+  - name: Create closjarjart volume
     community.docker.docker_volume:
-      name: leclosjarjart_data
+      name: closjarjart_data
 
   - name: Delete Dockerfile
     file:
-      path: /data/leclosjarjart/docker/Dockerfile
+      path: /data/closjarjart/docker/Dockerfile
       state: absent
 
   - name: Write docker file
     ansible.builtin.blockinfile:
-      path: /data/leclosjarjart/docker/Dockerfile
+      path: /data/closjarjart/docker/Dockerfile
       create: true
       mode: a+rwx
       block: |
         FROM node:22.14-alpine3.21
         RUN apk update
         RUN apk add wget
-        RUN mkdir -p /opt/leclosjarjart
-        WORKDIR /opt/leclosjarjart/
-        RUN wget https://github.com/Zombitch/leclosjarjart/archive/refs/heads/main.zip
+        RUN mkdir -p /opt/closjarjart
+        WORKDIR /opt/closjarjart/
+        RUN wget https://github.com/Zombitch/closjarjart/archive/refs/heads/main.zip
         RUN unzip main.zip && rm -f main.zip
-        WORKDIR /opt/leclosjarjart/leclosjarjart-main/leclosjarjart-back
+        WORKDIR /opt/closjarjart/closjarjart-main/closjarjart-back
+        RUN echo "encodingLoop=5" >> .env
+        RUN echo "cryptKey={{ cryptKey }}" >> .env
+        RUN echo "jwtSecret={{ secret }}" >> .env
+        RUN echo "apiKey={{ apiKey }}" >> .env
+        RUN echo "mongoPassword={{ mongoPassword }}" >> .env
+        RUN echo "smtpUser={{ smtpUser }}" >> .env
+        RUN echo "smtpPwd={{ smtpPassword }}" >> .env
+        RUN echo "allowOrigin={{ allowOrigin }}" >> .env
         RUN npm install -g @nestjs/cli
         RUN npm i
         EXPOSE 4000
@@ -44,28 +52,28 @@
 
   - name: Delete previous image
     community.docker.docker_image:
-      name: leclosjarjart-back
+      name: closjarjart-back
       state: absent
       force_absent: true
 
   - name: Create the image
     community.docker.docker_image:
-      name: leclosjarjart-back
+      name: closjarjart-back
       source: build
       build:
-        path: /data/leclosjarjart-back/docker
+        path: /data/closjarjart-back/docker
 
   - name: Run navssi/tools container
     community.docker.docker_container:
       container_default_behavior: no_defaults
-      name: leclosjarjart-back
-      image: leclosjarjart-back
-      hostname: leclosjarjart-back_host
+      name: closjarjart-back
+      image: closjarjart-back
+      hostname: closjarjart-back_host
       state: started
       restart_policy: always
       exposed_ports :
         - 4000
       volumes:
-        - leclosjarjart_data:/opt/leclosjarjart/leclosjarjart-main/leclosjarjart-back/data
+        - closjarjart_data:/opt/closjarjart/closjarjart-main/closjarjart-back/data
       networks:
         - name: "{{ network }}"
