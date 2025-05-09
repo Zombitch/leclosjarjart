@@ -11,6 +11,7 @@ import { SystemService} from 'navsii-tools/dist/core/system/system.service'
 import { MailerModule } from '@nestjs-modules/mailer';
 import { ConfigModule } from '@nestjs/config';
 import { UserService } from 'navsii-tools/dist/core/user/user.service'
+import { EmailController } from './email/email.controller';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { UserService } from 'navsii-tools/dist/core/user/user.service'
     AuthModule, UserModule,
     ConfigModule.forRoot({ignoreEnvFile: true})
   ],
-  controllers: [AppController, MailController, UserController],
+  controllers: [AppController, UserController, EmailController],
   providers: [
     AppService, 
     SecurityService,
