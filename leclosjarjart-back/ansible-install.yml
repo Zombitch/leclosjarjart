@@ -33,9 +33,9 @@
         RUN apk add wget
         RUN mkdir -p /opt/closjarjart
         WORKDIR /opt/closjarjart/
-        RUN wget https://github.com/Zombitch/closjarjart/archive/refs/heads/main.zip
+        RUN wget https://github.com/Zombitch/leclosjarjart/archive/refs/heads/main.zip
         RUN unzip main.zip && rm -f main.zip
-        WORKDIR /opt/closjarjart/closjarjart-main/closjarjart-back
+        WORKDIR /opt/closjarjart/leclosjarjart-main/leclosjarjart-back
         RUN echo "encodingLoop=5" >> .env
         RUN echo "cryptKey={{ cryptKey }}" >> .env
         RUN echo "jwtSecret={{ secret }}" >> .env
@@ -75,6 +75,6 @@
       exposed_ports :
         - 4000
       volumes:
-        - closjarjart_data:/opt/closjarjart/closjarjart-main/closjarjart-back/data
+        - closjarjart_data:/opt/closjarjart/leclosjarjart-main/leclosjarjart-back/data
       networks:
         - name: "{{ network }}"
