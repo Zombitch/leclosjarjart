@@ -11,6 +11,14 @@ import { ContactMailComponent } from '../components/contact-mail/contact-mail.co
 })
 export class HomeComponent {
     readonly contactDialog = inject(MatDialog);
+    
+    images: string[] = [
+    "https://www.w3schools.com/howto/img_lights_wide.jpg",
+    "https://www.w3schools.com/howto/img_5terre_wide.jpg",
+    "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+    "https://www.w3schools.com/howto/img_lights_wide.jpg",
+    "https://www.w3schools.com/howto/img_5terre_wide.jpg",
+    "https://www.w3schools.com/howto/img_mountains_wide.jpg"]
 
     openContactDialog(){
         this.contactDialog.open(ContactMailComponent);

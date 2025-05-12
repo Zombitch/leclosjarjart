@@ -1,7 +1,7 @@
 <div class="page-container">
     <main>
         <section>
-            <carousel-image imageSrc="https://www.chateausully.fr/sites/chateau-sully/files/styles/media_xlarge/public/vue-chateau-sully-bis-1400x900.jpg" ></carousel-image>
+            <carousel-image [imageList]="images"></carousel-image>
         </section>
     
         <section class="container">
@@ -76,7 +76,7 @@
             <h3 id="title">Localisation</h3>
             <section>
                 <a href="https://maps.app.goo.gl/23uzH7DVhXVzaUoV9">
-                    <carousel-image imageSrc="/assets/location.png" ></carousel-image>
+                    <carousel-image [imageList]="['/assets/location.png']" ></carousel-image>
                 </a>
             </section>
             <mat-divider></mat-divider>

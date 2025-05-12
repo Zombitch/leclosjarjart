@@ -1,3 +1,10 @@
 <mat-card class="image-card">
-    <img [src]="imageSrc" alt="Responsive image" class="responsive-image" />
+
+    <div class="slide-img" #slide *ngFor="let img of imageList; let i = index">
+        <img class="responsive-image" src="{{img}}" style="width:100%">
+    </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" (click)="previousSlide()" *ngIf="imageList.length > 1">&#10094;</a>
+    <a class="next" (click)="nextSlide()" *ngIf="imageList.length > 1">&#10095;</a>
 </mat-card>
